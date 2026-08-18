@@ -21,10 +21,6 @@ return new class extends Migration
             $table->string('title');
             $table->string('status')->default('draft');
 
-            // The proposal body as an editable document (a stored DOCX the
-            // editor loads and saves). `sections` stays as optional structured
-            // metadata (e.g. an outline), not the primary content.
-            $table->string('document_url')->nullable();
             $table->json('sections')->nullable();
 
             $table->date('sent_at')->nullable();
