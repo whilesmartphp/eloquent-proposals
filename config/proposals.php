@@ -1,6 +1,12 @@
 <?php
 
+use Whilesmart\Proposals\Models\Proposal;
+use Whilesmart\Proposals\ResponseFormatters\DefaultResponseFormatter;
+
 return [
+    'model' => Proposal::class,
+    'response_formatter' => DefaultResponseFormatter::class,
+    'hooks' => [],
     'register_routes' => env('PROPOSALS_REGISTER_ROUTES', true),
     'route_prefix' => env('PROPOSALS_ROUTE_PREFIX', 'api'),
     'route_middleware' => ['api', 'auth:sanctum'],

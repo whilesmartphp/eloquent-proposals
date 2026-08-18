@@ -9,6 +9,6 @@ trait HasProposals
 {
     public function proposals(): MorphMany
     {
-        return $this->morphMany(Proposal::class, 'owner');
+        return $this->morphMany(config('proposals.model', Proposal::class), 'owner');
     }
 }
