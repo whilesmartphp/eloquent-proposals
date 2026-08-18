@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Whilesmart\Customers\Models\Customer;
 use Whilesmart\Proposals\Database\Factories\ProposalFactory;
 use Whilesmart\Proposals\Enums\ProposalStatus;
+use Whilesmart\Proposals\Events\ProposalCreated;
 use Whilesmart\Shareables\Traits\Shareable;
 
 class Proposal extends Model
@@ -20,6 +21,10 @@ class Proposal extends Model
     public const SECTION_TYPES = ['cover', 'summary', 'scope', 'timeline', 'terms', 'pricing'];
 
     protected $guarded = ['id'];
+
+    protected $dispatchesEvents = [
+        'created' => ProposalCreated::class,
+    ];
 
     protected $casts = [
         'status' => ProposalStatus::class,
